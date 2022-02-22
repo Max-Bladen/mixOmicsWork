@@ -1,0 +1,42 @@
+---
+description: |
+  "This is a child document for README.Rmd to isolate What's New updates (last section of README)"
+  "see README.Rmd's last chunk."
+  "No need to knit this. Knitting README will automatically include this."
+---
+
+```{r setup-news, include=FALSE}
+library(knitr)
+opts_chunk$set( echo = TRUE, eval = FALSE, warning = FALSE, message = FALSE)
+```
+
+
+```{r, echo=FALSE, eval=FALSE, message='hide', fig.asp=1, out.width="50%"}
+## template chunk - don't change/delete
+```
+
+## What's New
+
+#### July 2021
+
+* new function `plotMarkers` to visualise the selected features in block analyses (see https://github.com/mixOmicsTeam/mixOmics/issues/134)
+* `tune.spls` now able to tune the selected variables on both `X` and `Y`. See `?tune.spls`
+* new function `impute.nipals` to impute missing values using the nipals algorithm
+* new function `tune.spca` to tune the number of selected variables for pca components
+* `circosPlot` now has methods for `block.spls` objects. It can now handle similar feature names across blocks. It is also much more customisable. See advanced arguments in `?circosPlot`
+* new `biplot` function for `pca` and `pls` objects. See `?mixOmics::biplot`
+* `plotDiablo` now takes `col.per.group` (see #119)
+
+#### April 2020
+
+* weighted consensus plots for DIABLO objects now consider per-component weights
+
+#### March 2020
+
+* `plotIndiv` now supports (weighted) consensus plots for block analyses. See the example in [this issue](https://github.com/mixOmicsTeam/mixOmics/issues/57)
+* `plotIndiv(..., ind.names=FALSE)` [warning issue](https://github.com/mixOmicsTeam/mixOmics/issues/59) now fixed
+
+#### January 2020
+
+* `perf.block.splsda` now supports calculation of combined AUC
+* `block.splsda` bug which could drop some classes with `near.zero.variance=TRUE` now fixed
