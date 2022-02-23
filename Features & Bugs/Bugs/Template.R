@@ -1,6 +1,6 @@
 library(devtools)
 library(mixOmics)
-setwd("~/GitHub/mixOmics/R")
+setwd("C:/Users/Work/Desktop/Dev Build/R")
 
 # ---------------------------------------------------------------------------- #
 
