@@ -1,0 +1,106 @@
+---
+title: "Test"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+```{r eval = FALSE}
+## packages you might need
+install.packages("devtools")
+library(devtools)
+install.packages("RCurl")
+devtools:::install_github("omegahat/RCurl")  # other option
+install.packages("XML")
+devtools:::install_github("ajabadi/XMLRPC", ref = "patch-2") ## informative error when 'Problems' occurs
+devtools:::install_github("duncantl/RWordPress")
+```
+
+```{r}
+library(RWordPress)
+library(XML)
+library(RCurl)
+library(knitr)
+## functon to upload images
+opts_knit$set(upload.fun = imgur_upload, base.url = NULL) 
+```
+
+
+# Credentials
+
+Save your credentials as indicated below in `__wp_credentials.R`. It is ignored in .gitignore. Run it before proceeding.
+
+```{r}
+# Set your WP username, password, and your site URL
+ options(WordpressLogin = c(maxbladen = ''), #update these
+         WordpressURL = 'http://mixomics.org/xmlrpc.php')
+# note: you may have to play around with the following options 'http://mixomics.org/xmlrpc.php' (http, not https)
+```
+
+```{r}
+## instead 
+source("../__wp_credentials.R")
+```
+
+# Rmd files
+
+**Find the 'title's from src/Submit_Rmd_to_mixOmics.org.R**
+
+## Test
+
+Make sure this test works (successfully knits, return a number and shows up in drafts) and `Trash` it from `Pages > Drafts`:
+
+```{r}
+knit2wp(input = '__Test.Rmd', title = 'this is a test',  shortcode = FALSE, publish = FALSE, 
+        action = c("newPage"))
+```
+
+
+```{r}
+# more advanced test
+knit2wp(input = '__Test2.Rmd', title = 'this is a test2',  shortcode = FALSE, publish = FALSE, 
+        action = c("newPage"))
+```
+
+```{r}
+# current test
+knit2wp(input = 'Test3.Rmd', title = 'Test3',  shortcode = FALSE, publish = FALSE, 
+        action = c("newPage"))
+```
+**Now, move on to src/Submit_Rmd_to_mixOmics.org.R to update each page (not in bulk!)**
+
+GUIDELINES: the new files will be sent to drafts on wordpress
+
+1 - go to the updated page in Pages/drafts, preview, then 'quick edit' then 'publish'
+
+2 - trash the existing file in Pages/Published
+
+3 - in Pages/published, then 'quick edit' then choose parent page (probably not super useful) 
+
+4 - Go to Appearance/Menu, add the nuw page to menu (will be append at the bottom) then reorganise the tab then 'save menu'
+
+5 - check on website
+
+
+**List of potential errors / things to check:**
+
+- if SSL error, check the credentials, as it could be WordpressURL = 'http://mixomics.org/xmlrpc.php OR 'http://mixomics.org/xmlrpc.php' (http, not https) (for example Al is https, and KA is http)
+
+- if Bad Request (HTTP 400) or time out, keep trying. The server is just not responding
+
+- text in comment in the Rmd text (it is ok in the code)
+
+- Headings very similar to the title. Remove any first heading in the document
+
+- check references weblinks: maybe too long
+
+- for CIM / networks, put out.width='30%' in the chunk
+
+
+
+<!-- Could read this further for bugs (scroll end of page): http://tobiasdienlin.com/2019/03/08/how-to-publish-a-blog-post-on-wordpress-using-rmarkdown/ -->
+
