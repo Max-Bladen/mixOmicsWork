@@ -45,9 +45,9 @@ X <- list(rna = X1, methylation = X2, accessibility = X3)
 # ---------------------------------------------------------------------------- #
 
 data(breast.TCGA)
-data = list(miRNA = breast.TCGA$data.train$mirna, 
-            mRNA = breast.TCGA$data.train$mrna,
-            proteomics = breast.TCGA$data.train$protein)
+X = list(miRNA = breast.TCGA$data.train$mirna,
+         mRNA = breast.TCGA$data.train$mrna,
+         proteomics = breast.TCGA$data.train$protein)
 Y = breast.TCGA$data.train$subtype
 
 # ---------------------------------------------------------------------------- #
@@ -58,6 +58,19 @@ data(stemcells)
 X <- stemcells$gene
 Y <- stemcells$celltype
 study <- stemcells$study
+
+# ---------------------------------------------------------------------------- #
+# =========================== MINT.Block.(s)PLSDA ============================ #
+# ---------------------------------------------------------------------------- #
+
+data(breast.TCGA)
+mrna = rbind(breast.TCGA$data.train$mrna, breast.TCGA$data.test$mrna)
+mirna = rbind(breast.TCGA$data.train$mirna, breast.TCGA$data.test$mirna)
+X = list(mrna = mrna, mirna = mirna)
+Y = c(breast.TCGA$data.train$subtype, breast.TCGA$data.test$subtype)
+
+study = c(rep("study1",150), rep("study2",70))
+
 
 # ---------------------------------------------------------------------------- #
 # ================================ Multilevel ================================ #
