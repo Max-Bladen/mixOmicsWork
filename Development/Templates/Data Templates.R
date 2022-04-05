@@ -1,4 +1,8 @@
 
+setwd("C:/Users/Work/Desktop/mixOmics/R")
+
+devtools::load_all()
+
 # ---------------------------------------------------------------------------- #
 # ================================== (s)PCA ================================== #
 # ---------------------------------------------------------------------------- #
@@ -34,7 +38,8 @@ Y <- nutrimouse$gene
 # =============================== Block.(s)PLS =============================== #
 # ---------------------------------------------------------------------------- #
 
-load('C:/Users/Work/Desktop/mO Work/Development/Data/nmt_data_processed.RData')
+data.GH.URL <- "https://github.com/Max-Bladen/mixOmicsWork/blob/main/Development/Data/nmt_data_processed.RData?raw=true"
+.load_url(data.GH.URL)
 X1 <- data$rna
 X2 <- data$met_genebody
 X3 <- data$acc_genebody
