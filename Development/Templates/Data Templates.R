@@ -84,3 +84,4 @@ study = c(rep("study1",150), rep("study2",70))
 data(vac18)
 X <- vac18$genes
 Y <- vac18$stimulation
+ml <- vac18$sample
