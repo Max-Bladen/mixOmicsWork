@@ -62,7 +62,7 @@ Y = breast.TCGA$data.train$subtype
 data(stemcells)
 X <- stemcells$gene
 Y <- stemcells$celltype
-study <- stemcells$study
+s <- stemcells$study
 
 # ---------------------------------------------------------------------------- #
 # =========================== MINT.Block.(s)PLSDA ============================ #
