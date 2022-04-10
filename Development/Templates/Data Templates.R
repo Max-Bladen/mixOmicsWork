@@ -38,6 +38,13 @@ Y <- nutrimouse$gene
 # =============================== Block.(s)PLS =============================== #
 # ---------------------------------------------------------------------------- #
 
+data(breast.TCGA)
+X = list(miRNA = breast.TCGA$data.train$mirna,
+         mRNA = breast.TCGA$data.train$mrna,
+         proteomics = breast.TCGA$data.train$protein)
+
+# ---------------------------------------------------------------------------- #
+
 data.GH.URL <- "https://github.com/Max-Bladen/mixOmicsWork/blob/main/Development/Data/nmt_data_processed.RData?raw=true"
 .load_url(data.GH.URL)
 X1 <- data$rna
