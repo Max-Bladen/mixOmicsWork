@@ -66,8 +66,7 @@ Y = breast.TCGA$data.train$subtype
 
 data(breast.TCGA)
 X = list(miRNA = breast.TCGA$data.test$mirna,
-         mRNA = breast.TCGA$data.test$mrna,
-         proteomics = breast.TCGA$data.test$protein)
+         mRNA = breast.TCGA$data.test$mrna)
 Y = breast.TCGA$data.test$subtype
 
 # ---------------------------------------------------------------------------- #
