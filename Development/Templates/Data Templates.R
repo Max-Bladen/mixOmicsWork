@@ -63,6 +63,14 @@ X = list(miRNA = breast.TCGA$data.train$mirna,
 Y = breast.TCGA$data.train$subtype
 
 # ---------------------------------------------------------------------------- #
+
+data(breast.TCGA)
+X = list(miRNA = breast.TCGA$data.test$mirna,
+         mRNA = breast.TCGA$data.test$mrna,
+         proteomics = breast.TCGA$data.test$protein)
+Y = breast.TCGA$data.test$subtype
+
+# ---------------------------------------------------------------------------- #
 # ============================== MINT.(s)PLSDA =============================== #
 # ---------------------------------------------------------------------------- #
 
